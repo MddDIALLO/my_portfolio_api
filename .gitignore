@@ -2,6 +2,7 @@
 *.log
 *.pot
 *.pyc
+notes.json
 settings.py
 __pycache__
 db.sqlite3

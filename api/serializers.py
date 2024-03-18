@@ -1,5 +1,16 @@
 from rest_framework import serializers
-from .models import Category, Tag, Post, Comment, ContactMessage
+from .models import CustomUser, Category, Tag, Post, Comment, ContactMessage
+
+class CustomUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = '__all__'
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        user = CustomUser.objects.create_user(**validated_data)
+        return user
+
 
 
 class CategorySerializer(serializers.ModelSerializer):
